@@ -1,21 +1,9 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "Exercise",
-      "description": "Do 30 minutes of walking or aerobic exercise.",
-      "completed": false
-    },
-    {
       "id": "2",
       "title": "Reading",
       "description": "Read at least 20 pages of your favorite book.",
-      "completed": false
-    },
-    {
-      "id": "3",
-      "title": "Programming Practice",
-      "description": "Complete a JavaScript exercise on the practice site.",
       "completed": false
     },
     {
@@ -28,7 +16,7 @@
       "id": "5",
       "title": "New Task",
       "description": "Description for new task.",
-      "completed": false
+      "completed": true
     },
     {
       "id": "6",
@@ -40,7 +28,7 @@
       "id": "7",
       "title": "New Task",
       "description": "Description for new task.",
-      "completed": false
+      "completed": true
     }
   ]
 }
