@@ -16,7 +16,7 @@
       "id": "3",
       "title": "Programming Practice",
       "description": "Complete a JavaScript exercise on the practice site.",
-      "completed": true
+      "completed": false
     },
     {
       "id": "4",
