@@ -1,7 +1,9 @@
-import Task from "@/components/Task";
+"use client";
 
-export default async function Home() {
- 
+import Task from "@/components/Task";
+import { withAuth } from "@/components/withAuth";
+
+function Home() {
   return (
     <div className="w-screen h-screen bg-[#658c50] flex flex-col justify-center items-center gap-8">
       <section className="w-3/4 max-h-3/4 p-4 bg-[#e2d7ab] rounded-xl flex flex-col gap-4 overflow-y-auto">
@@ -10,3 +12,5 @@ export default async function Home() {
     </div>
   );
 }
+
+export default withAuth(Home);
