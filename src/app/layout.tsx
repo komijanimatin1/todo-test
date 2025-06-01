@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-<<<<<<< HEAD
-
-=======
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
->>>>>>> V1
 
 export const metadata: Metadata = {
   title: "Create Next App",
