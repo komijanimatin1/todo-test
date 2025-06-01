@@ -58,8 +58,8 @@ export default function Task() {
             <p className={`${todo.completed ? "line-through" : ""}`}>Status: <span className={`font-normal `}>{todo.completed ? "Completed" : "Pending"}</span></p>
           </div>
           {/* Task Actions */}
-          <div className="mt-2 px-2 flex justify-between">
-            <div className="flex gap-4">
+          <div className="mt-2 px-2 flex flex-nowrap md:flex-row flex-col justify-between gap-4">
+            <div className="flex md:justify-start justify-between gap-4">
               {/* Task Action Buttons */}
               <EditTask task={todo} onSuccess={fetchTodos} />
               <DeleteButton id={todo.id} setTodos={setTodos} />
