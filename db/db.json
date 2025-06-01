@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "Buy groceries",
+      "description": "Milk, eggs, bread, and coffee",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Finish project report",
+      "description": "Summarize data and send to manager",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "title": "Workout",
+      "description": "Go for a 30-minute run",
+      "completed": true
+    },
+    {
+      "id": "4",
+      "title": "Read book",
+      "description": "Read at least 20 pages of a novel",
+      "completed": false
+    },
+    {
+      "id": "5",
+      "title": "Call Mom",
+      "description": "Catch up and ask about her weekend",
+      "completed": true
+    },
+    {
+      "id": "7",
+      "title": "Plan weekend trip",
+      "description": "Choose destination and book hotel",
+      "completed": false
+    }
+  ]
+}
