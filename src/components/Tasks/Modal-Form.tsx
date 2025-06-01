@@ -66,59 +66,66 @@ export default function ModalForm({
       }
 
       onSuccess(); // refresh tasks
-      onClose();
+      onClose(); // close modal
     } catch (err) {
       console.error("Error submitting form:", err);
     }
   };
 
   return (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/10"
-    onClick={onClose}
-  >
+    // Modal Background
     <div
-      className="bg-white p-6 rounded-md w-[300px] space-y-4"
-      onClick={(e) => e.stopPropagation()} // جلوگیری از بستن موقع کلیک روی خود فرم
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/10"
+      onClick={onClose}
     >
-      <h2 className="text-lg font-bold">{isEdit ? "Edit Task" : "Add Task"}</h2>
+      {/* Modal Background */}
+      <div
+        className="bg-white p-6 rounded-md w-[300px] space-y-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Modal Header */}
+        <h2 className="text-lg font-bold">{isEdit ? "Edit Task" : "Add Task"}</h2>
+        {/* Title Input */}
+        <input
+          className="w-full border p-2"
+          {...register("title")}
+          placeholder="Title"
+        />
+        {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
 
-      <input
-        className="w-full border p-2"
-        {...register("title")}
-        placeholder="Title"
-      />
-      {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
+        {/* Description Input */}
+        <textarea
+          className="w-full border p-2"
+          {...register("description")}
+          placeholder="Description"
+        />
+        {errors.description && (
+          <p className="text-red-500 text-sm">{errors.description.message}</p>
+        )}
 
-      <textarea
-        className="w-full border p-2"
-        {...register("description")}
-        placeholder="Description"
-      />
-      {errors.description && (
-        <p className="text-red-500 text-sm">{errors.description.message}</p>
-      )}
+        {isEdit && (
+          <div className="flex items-center gap-2">
+            <input type="checkbox" {...register("completed")} />
+            <span>Completed</span>
+          </div>
+        )}
 
-      {isEdit && (
-        <div className="flex items-center gap-2">
-          <input type="checkbox" {...register("completed")} />
-          <span>Completed</span>
+        {/** Modal Footer **/}
+        <div className="flex justify-end gap-4">
+          
+          <button
+            onClick={handleSubmit(onSubmit)}
+            className="bg-blue-500 text-white px-4 py-1 rounded"
+          >
+            {isEdit ? "Save" : "Add"}
+          </button>
+
+          <button onClick={onClose} className="text-gray-500">
+            Cancel
+          </button>
         </div>
-      )}
-
-      <div className="flex justify-end gap-2">
-        <button
-          onClick={handleSubmit(onSubmit)}
-          className="bg-blue-500 text-white px-4 py-1 rounded"
-        >
-          {isEdit ? "Save" : "Add"}
-        </button>
-        <button onClick={onClose} className="text-gray-500">
-          Cancel
-        </button>
       </div>
     </div>
-  </div>
-);
+  );
 
 }

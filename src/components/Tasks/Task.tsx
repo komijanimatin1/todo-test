@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AddTask from "./Add-Button";
-import EditTask from "./Edit-Button";
-import DeleteButton from "./Delete-Button";
-import ToggleSwitch from "./Switch";
+import AddTask from "../UI/Add-Button";
+import EditTask from "../UI/Edit-Button";
+import DeleteButton from "../UI/Delete-Button";
+import ToggleSwitch from "../UI/Switch";
 
 export interface Todo {
   id: number;
@@ -15,6 +15,7 @@ export interface Todo {
 }
 
 export default function Task() {
+
   const [todos, setTodos] = useState<Todo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -41,28 +42,35 @@ export default function Task() {
 
   return (
     <div className="space-y-4">
-
+      {/* Task List */}
       {todos.length === 0 ? <p className="text-center text-gray-500">No tasks found.</p> : todos.map((todo) => (
         <div
           key={todo.id}
           className={`p-4 rounded shadow transition-all duration-300 ${todo.completed ? "bg-gray-400 text-gray-300" : "bg-yellow-100 text-gray-700"}`}
         >
-          <h2 className={`text-lg font-semibold ${todo.completed ? "line-through" : ""}`}>
-            Title: <span className="font-normal">{todo.title}</span>
-          </h2>
-          <p className={todo.completed ? "line-through" : ""}>Description: <span className="font-normal">{todo.description}</span></p>
-          <p className={`${todo.completed ? "line-through" : ""}`}>Status: <span className={`font-normal `}>{todo.completed ? "Completed" : "Pending"}</span></p>
-
+          {/* Task Details */}
+          <div>
+            {/* Task Title */}
+            <h2 className={`text-lg font-semibold ${todo.completed ? "line-through" : ""}`}>
+              Title: <span className="font-normal">{todo.title}</span>
+            </h2>
+            <p className={todo.completed ? "line-through" : ""}>Description: <span className="font-normal">{todo.description}</span></p>
+            <p className={`${todo.completed ? "line-through" : ""}`}>Status: <span className={`font-normal `}>{todo.completed ? "Completed" : "Pending"}</span></p>
+          </div>
+          {/* Task Actions */}
           <div className="mt-2 px-2 flex justify-between">
             <div className="flex gap-4">
+              {/* Task Action Buttons */}
               <EditTask task={todo} onSuccess={fetchTodos} />
               <DeleteButton id={todo.id} setTodos={setTodos} />
             </div>
+            {/* Task Toggle Switch */}
             <ToggleSwitch id={todo.id} completed={todo.completed} setTodos={setTodos} />
           </div>
 
         </div>
       ))}
+      {/* Task Summary */}
       <div className={`flex  ${todos.length === 0 ? "justify-center" : "justify-between"}`}>
         {todos.length > 0 && <p className="text-center text-gray-500">Total Tasks: {todos.length}</p>}
         <AddTask onSuccess={fetchTodos} />
