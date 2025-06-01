@@ -4,10 +4,11 @@ import { Switch } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPen, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faPlus } from "@fortawesome/free-solid-svg-icons";
 import ModalForm from "./Modal-Form";
+import DeleteButton from "./Delete-Button";
 
-interface Todo {
+export interface Todo {
   id: number;
   title: string;
   description: string;
@@ -119,9 +120,7 @@ export default function Task() {
               <button onClick={() => handleEdit(todo)} className="text-blue-600 hover:text-blue-800">
                 <FontAwesomeIcon icon={faPen} />
               </button>
-              <button onClick={() => handleDelete(todo.id)} className="text-red-600 hover:text-red-800">
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
+              <DeleteButton id={todo.id} setTodos={setTodos} />
             </div>
             {
               modalOpen && selectedTask && (
