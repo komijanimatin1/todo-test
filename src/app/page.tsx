@@ -1,5 +1,3 @@
-
-//Importing components
 import Task from "@/components/Task";
 
 export default async function Home() {
