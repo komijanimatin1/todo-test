@@ -1,35 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import ModalForm from "./Modal-Form";
-import { Todo } from "./Task";
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import ModalForm from "../Tasks/Modal-Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 
 interface Props {
-    task: Todo;
     onSuccess: () => void;
 }
 
-export default function EditTask({ task, onSuccess }: Props) {
+export default function AddTask({ onSuccess }: Props) {
+    // Modal state
     const [open, setOpen] = useState(false);
 
     return (
         <>
+            {/* Add Task Button */}
             <button
                 onClick={() => setOpen(true)}
-                className="text-blue-600 underline text-sm"
+                className="bg-[#658c50] hover:bg-[#4a6e3a] transition-all duration-200 text-white px-4 py-1 rounded"
             >
-                <FontAwesomeIcon icon={faPencil} size="xl" />
+                <FontAwesomeIcon icon={faPlus} size="xl" />
             </button>
 
+            {/* Modal Form */}
             {open && (
                 <ModalForm
-                    defaultValues={task}
-                    taskId={task.id}
+                    defaultValues={{ title: "", description: "", completed: false }}
                     onClose={() => setOpen(false)}
                     onSuccess={onSuccess}
-                    isEdit
                 />
             )}
         </>
