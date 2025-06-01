@@ -1,4 +1,3 @@
-// components/DeleteButton.tsx
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,7 +25,7 @@ export default function DeleteButton({ id, setTodos }: DeleteButtonProps) {
       onClick={handleDelete}
       className="text-red-600 hover:text-red-800"
     >
-      <FontAwesomeIcon icon={faTrash} />
+      <FontAwesomeIcon icon={faTrash} size="xl" />
     </button>
   );
 }
